@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group
-from blog.models import User, Post, Commentary
+from blog.models import User, Post, Comment
 
 
 @admin.register(User)
@@ -15,10 +15,10 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ("title",)
 
 
-@admin.register(Commentary)
-class CommentaryAdmin(admin.ModelAdmin):
-    list_display = ("content", "user", "post", "created_time")
-    search_fields = ("content",)
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ("text", "author", "post", "created_time")
+    search_fields = ("text",)
     list_filter = ("post",)
 
 

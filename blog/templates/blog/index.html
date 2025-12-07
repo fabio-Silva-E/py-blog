@@ -23,6 +23,8 @@
 {% empty %}
 <p>Nenhuma postagem encontrada.</p>
 {% endfor %}
-
+{% block pagination %}
+{% include "includes/pagination.html" %}
+{% endblock %}
 {% endblock %}
 

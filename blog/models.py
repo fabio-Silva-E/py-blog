@@ -12,9 +12,9 @@ class User(AbstractUser):
 
 
 class Post(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="author")
     title = models.CharField(max_length=255)
-    content = models.TextField()
+    text = models.TextField()
     created_time = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -27,10 +27,10 @@ class Post(models.Model):
         return reverse("blog:post-detail", kwargs={"pk": self.pk})
 
 
-class Commentary(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
+class Comment(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
-    content = models.CharField(max_length=255)
+    text = models.CharField(max_length=255)
     created_time = models.DateTimeField(auto_now_add=True)
 
     class Meta:

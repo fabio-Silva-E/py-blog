@@ -4,7 +4,6 @@
 <h1> {{ post.title }}</h1>
 <hr>
 <ul>
-
   <li>{{ post.content }}</li>
   <p> {{ post.owner.username }} at {{ post.created_time }}</p>
 </ul>
@@ -13,10 +12,10 @@
 {% for comment in post.comments.all %}
 <table class="table table-bordered mb-3">
   <tr>
-    <th><strong>{{ comment.user.username }} </strong>-> {{ comment.created_time }}</th>
+    <th><strong>{{ comment.author.username }} </strong>-> {{ comment.created_time }}</th>
   </tr>
   <tr>
-    <td><strong>{{ comment.content }}</strong></td>
+    <td><strong>{{ comment.text }}</strong></td>
   </tr>
 
 </table>
